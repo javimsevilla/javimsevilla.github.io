@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS Pre-processors</title>
+
+		<meta name="description" content="Presentación sobre preprocesadores de CSS">
+		<meta name="author" content="Javier Molina Sevilla">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		
+		<!-- Themes -->
+
+		<!-- <link rel="stylesheet" href="css/theme/white.css" id="theme"> -->
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<!-- <link rel="stylesheet" href="css/theme/black.css" id="theme"> -->
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+		
+			code.css::after {
+				content: 'CSS';
+			}
+
+			code.scss::after {
+				content: 'SASS';
+			}
+
+			code.less::after {
+				content: 'LESS';
+			}
+
+			code.stylus::after {
+				content: 'STYLUS';
+			}
+
+			code::after {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: .3em .5em;
+				background: #666;
+				font-weight: normal;
+				color: #fff;
+				text-transform: uppercase;
+				text-shadow: none;
+			}
+
+			.row, [class^="col-"] {
+				box-sizing: border-box;
+			}
+
+			.row:after {
+				clear: both;
+			}
+
+			.row:before,
+			.row:after {
+				display: table;
+				content: " ";
+			}
+
+			div[class^="col-"] {
+				position: relative;
+				min-height: 1px;
+				padding-right: 15px;
+				padding-left: 15px;
+				float: left;
+			}
+
+			.col-12 { width: 100%; }
+			.col-11 { width: 91.666666666666666666666666666667%; }
+			.col-10 { width: 83.333333333333333333333333333333%; }
+			.col-9 { width: 75%; }
+			.col-8 { width: 66.666666666666666666666666666667%; }
+			.col-7 { width: 58.333333333333333333333333333333%; }
+			.col-6 { width: 50%; }
+			.col-5 { width: 41.666666666666666666666666666667%; }
+			.col-4 { width: 33.333333333333333333333333333333%; }
+			.col-3 { width: 25%; }
+			.col-2 { width: 16.666666666666666666666666666667%; }
+			.col-1 { width: 8.3333333333333333333333333333333%; }
+
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>CSS<br /> Pre-processors</h1>
+					<p>
+						<small>By Javier Molina Sevilla / <a href="mailto:javier.molina.sevilla@gmail.com">javier.molina.sevilla@gmail.com</a></small>
+						<small>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>What are CSS Pre-processors?</h2>
+					</section>
+					<section>
+						<h2>CSS Pre-processors are <span class="fragment highlight-current-blue">compiled</span> <span class="fragment highlight-current-blue">computer languages</span> that <span class="fragment highlight-current-blue">extends CSS language</span></h2>
+					</section>
+					<section>
+						<h2>CSS on Steroids</h2>
+						<blockquote cite="http://chodounsky.net/2013/03/21/css-on-steroids-introduction-to-less-and-sass/">"They add new functionality to help you maintain your CSS files. You write a simple code that is similar to plain CSS with some extra language constructions, compile it and the result of the compilation is a new CSS file."</blockquote>
+						<p><small>Reference: <a href="http://goo.gl/2IBgL7">http://goo.gl/2IBgL7</a></small></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 style="margin-bottom: 1em;">Why Pre-processing CSS?</h2>
+						<div style="float: left;">
+							<h3 class="fragment" data-fragment-index="1">Productivity</h3><img src="img/arrow-down.png" style="width: 35px; border: 0; background: none;" class="fragment" data-fragment-index="2"/>
+							<h4 class="fragment" data-fragment-index="2">Write CSS faster</h4>
+						</div>
+						<div style="float:right;">
+							<h3 class="fragment" data-fragment-index="3">Maintenance</h3><img src="img/arrow-down.png" style="width: 35px; border: 0; background: none;" class="fragment" data-fragment-index="4"/>
+							<h4 class="fragment" data-fragment-index="4">Less code = Easier code</h4>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>How can I use CSS Pre-processors?</h2>
+						<blockquote class="fragment roll-in">It depends on pre-processor vendor</blockquote>
+					</section>
+					<section>
+						<h2>How to use LESS?</h2>
+						<ol>
+							<li class="fragment">Install node.js (<a href="http://nodejs.org/">http://nodejs.org/</a>)</li>
+							<li class="fragment">
+								<p>Install less via <strong>npm</strong> (Node Package Manager)</p>
+								<pre><code class="nohighlight">$ npm install -g less</code></pre>
+							</li>
+							<li class="fragment">Create some LESS code (style.less)</li>
+							<li class="fragment">
+								<p>Compile file:</p>
+								<pre><code class="nohighlight">$ lessc style.less > style.css</code></pre>
+							</li> 
+						</ol>
+					</section>
+					<section>
+						<h2>How to use SASS?</h2>
+						<ol>
+							<li class="fragment">Install Ruby (<a href="http://rubyinstaller.org/">http://rubyinstaller.org/</a>)</li>
+							<li class="fragment">
+								<p>Install SASS gem
+								<pre><code class="nohighlight">$ gem install sass</code></pre>
+							</li>
+							<li class="fragment">
+								<p>Verify installation asking for sass version</p>
+								<pre><code class="nohighlight">$ sass -v</code></pre>
+							</li>
+							<li class="fragment">Create some SASS code (style.scss)</li>
+							<li class="fragment">
+								<p>Compile file:</p>
+								<pre><code class="nohighlight">$ sass input.scss output.css</code></pre>
+								<pre><code class="nohighlight">$ sass --watch input.scss:output.css</code></pre>
+								<pre><code class="nohighlight">$ sass --watch app/sass:public/stylesheets</code></pre>
+							</li>
+						</ol>
+					</section>
+					<section>
+						<h2>How to use STYLUS?</h2>
+						<ol>
+							<li class="fragment">Install node.js (<a href="http://nodejs.org/">http://nodejs.org/</a>)</li>
+							<li class="fragment">
+								<p>Install Stylus via <strong>npm</strong></p>
+								<pre><code class="nohighlight">$ npm install stylus -g</code></pre>
+							</li>
+							<li class="fragment">Create some Stylus code (style.styl)</li>
+							<li class="fragment">
+								<p>Compile file:</p>
+								<pre><code class="nohighlight">$ stylus --compress < some.styl > some.css</code></pre>
+							</li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Characteristics of CSS Pre-processors</h2>
+						<blockquote>It depends on pre-processor vendor</blockquote>
+						<img src="img/less-logo.png" alt="Less Logo" style="width: 50%; border: 0; background: none; text-align: center"/>
+						<img src="img/sass-logo.svg" alt="Sass Logo" style="max-width: 125px; border: 0; background: none;" />
+						<img src="img/stylus-logo.png" alt="Stylus Logo" style="max-width: 125px; border: 0; background: none;" />
+					</section>
+					<section>
+						<h2>Characteristics of CSS Pre-processors</h2>
+						<div style="-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;">
+							<h4 class="fragment roll-in">Variables</h4>
+							<h4 class="fragment roll-in">Nesting</h4>
+							<h4 class="fragment roll-in">Mixins</h4>
+							<h4 class="fragment roll-in">Extends</h4>
+							<h4 class="fragment roll-in">Color Functions</h4>
+							<h4 class="fragment roll-in">Flow control</h4>
+							<h4 class="fragment roll-in">Loops</h4>
+							<h4 class="fragment roll-in">Math Operations</h4>
+							<h4 class="fragment roll-in">Imports</h4>
+						</div>
+					</section>
+					<section>
+						<h2>Variables</h2>
+						<div class="row">
+							<div class="col-6 fragment">
+								<pre><code class="less" data-trim contenteditable>
+@bgcolor: #fff;
+@text_color: #555;
+
+body {
+    background: @bgcolor;
+    color: @text_color;
+}
+								</code></pre>
+							</div>
+							<div class="col-6 fragment">
+								<pre><code class="scss" data-trim contenteditable>
+$bgcolor: #fff;
+$text_color: #555;
+
+body {
+    background: $bgcolor;
+    color: $text_color;
+}
+								</code></pre>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 fragment">
+								<pre><code class="stylus" data-trim contenteditable>
+bgcolor = #fff
+text_color = #555
+
+body
+    background bgcolor
+    color text_color
+								</code></pre>
+							</div>
+							<div class="col-6 fragment">
+								<pre><code class="css" data-trim contenteditable>
+body {
+    background: #fff;
+    color: #555;
+}
+								</code></pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Nesting</h2>
+						<div class="row">
+							<div class="col-6 fragment">
+								<pre><code class="less" data-trim contenteditable>
+@link_color: #fff;
+@link_hover: #00f;
+
+li {
+
+  a {
+
+    &:link {
+      color: @link_color;
+    }
+
+    &:hover {
+      color: @link_hover;
+    }
+  }
+}
+								</code></pre>
+							</div>
+							<div class="col-6 fragment">
+								<pre><code class="css" data-trim contenteditable>
+li a:link {
+  color: #ffffff;
+}
+li a:hover {
+  color: #0000ff;
+}
+								</code></pre>
+							</div>
+						</div>
+						
+					</section>
+					<section>
+						<h2>Nesting</h2>
+						<div class="row">
+							<div class="col-6 fragment">
+								<pre><code class="scss" data-trim contenteditable>
+$link_color: #fff;
+$link_hover: #00f;
+
+li {
+
+  a {
+
+    &:link {
+      color: $link_color;
+    }
+
+    &:hover {
+      color: $link_hover;
+    }
+  }
+}
+								</code></pre>
+							</div>
+							<div class="col-6 fragment">
+								<pre><code class="stylus" data-trim contenteditable>
+link_color = #fff
+link_hover = #00f
+
+li
+    a
+        &:link
+            color link_color
+        &:hover
+            color link_hover
+								</code></pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Mixins</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="less" data-trim contenteditable>
+.headers (@font_size, @color){
+  font-size: @font_size;
+  color: @color;
+}
+
+h1 {
+  .headers(2em, blue);
+}
+
+h2 {
+  .headers(1.5em, red);
+}
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="css" data-trim contenteditable>
+h1 {
+  font-size: 2em;
+  color: blue;
+}
+h2 {
+  font-size: 1.5em;
+  color: red;
+}
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Mixins</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="scss" data-trim contenteditable>
+@mixin headers ($font_size, $color) {
+  font-size: $font_size;
+  color: $color;
+}
+
+h1 {
+  @include headers(2em, blue);
+}
+
+h2 {
+  @include headers(1.5em, red);
+}
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="stylus" data-trim contenteditable>
+headers (font_size, color)
+    font-size font_size
+    color color
+
+h1
+    headers(2em, blue)
+
+h2
+    headers(1.5em, red)
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Extends</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="less" data-trim contenteditable>
+@text_color: #55c;
+@font_size: 1rem;
+
+.text-base {
+  color: @text_color;
+  font-size: @font_size;
+}
+
+p {
+  &:extend(.text-base);
+  text-align: left;
+}
+
+a {
+  &:extend(.text-base);
+  font-weight: bold;
+}
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="css" data-trim contenteditable>
+.text-base, p, a {
+  color: #5555cc;
+  font-size: 1rem;
+}
+p {
+  text-align: left;
+}
+a {
+  font-weight: bold;
+}
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Extends</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="scss" data-trim contenteditable>
+$text_color: #55c;
+$font_size: 1rem;
+
+.text-base {
+  color: $text_color;
+  font-size: $font_size;
+}
+
+p {
+  @extend .text-base;
+  text-align: left;
+}
+
+a {
+  @extend .text-base;
+  font-weight: bold;
+}
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="stylus" data-trim contenteditable>
+text_color = #55c
+font_size = 1rem
+
+.text-base
+    color text_color
+    font-size font_size
+
+p
+    @extend .text-base
+    text-align left
+
+a
+    @extend .text-base
+    font-weight bold
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Color Functions</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="less" data-trim contenteditable>
+saturate(@color, @amount)
+desaturate(@color, @amount)
+lighten(@color, @amount)
+darken(@color, @amount)
+fadein(@color, @amount)
+fadeout(@color, @amount)
+fade(@color, @amount)
+spin(@color, @amount)
+mix(@color1, @color2, @weight)
+grayscale(@color)
+contrast(@color)
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="scss" data-trim contenteditable>
+saturate($color, $amount)
+desaturate($color, $amount)
+lighten($color, $amount)
+darken($color, $amount)
+adjust-hue($color, $amount)
+opacify($color, $amount)
+transparentize($color, $amount)
+mix($color1, $color2[, $amount])
+grayscale($color)
+complement($color)
+						        </code></pre>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="stylus" data-trim contenteditable>
+red(color)
+green(color)
+blue(color)
+alpha(color)
+dark(color)
+light(color)
+hue(color)
+saturation(color)
+lightness(color)
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Flow control</h2>
+				        <pre class="fragment"><code class="less" data-trim contenteditable>
+.mixin (@color) when (lightness(@color) > 30%) {
+    background-color: black;
+}
+.mixin (@color) when (lightness(@color) =<; 30%) {
+    background-color: white;
+}
+				        </code></pre>
+				        <pre class="fragment"><code class="scss" data-trim contenteditable>
+@if lightness($color) > 30% {
+    background-color: black;
+}
+
+@else {
+    background-color: white;
+}
+				        </code></pre>
+				        <pre class="fragment"><code class="stylus" data-trim contenteditable>
+if lightness(color) > 30%
+    background-color black
+else
+    background-color white
+				        </code></pre>
+					</section>
+					<section>
+						<h2>Loops</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+								<pre><code class="less" data-trim contenteditable>
+.loop(@counter) when (@counter > 0){
+    .loop((@counter - 1));
+
+    .border-@{counter} {
+        border: 1px * @counter solid blue;
+    }
+}
+
+span {
+  .loop(3);
+}
+
+				        		</code></pre>
+				        	</div>
+				        	<div class="col-6 fragment">
+				        		<pre><code class="scss" data-trim contenteditable>
+@for $i from 1px to 3px {
+  .border-#{i} {
+    border: $i solid blue;
+  }
+}
+				        		</code></pre>
+				            </div>
+				        </div>
+				        <div class="row">
+						    <div class="col-6 fragment">
+				        		<pre><code class="stylus" data-trim contenteditable>
+for num in (1..3)
+    .border-{num}
+        border 1px * num solid blue
+				        		</code></pre>
+				            </div>
+				            <div class="col-6 fragment">
+				        		<pre><code class="css" data-trim contenteditable>
+span .border-1 {
+  border: 1px solid blue;
+}
+span .border-2 {
+  border: 2px solid blue;
+}
+span .border-3 {
+  border: 3px solid blue;
+}
+				        		</code></pre>
+				            </div>
+				        </div>
+					</section>
+					<section>
+						<h2>Math Operations</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="less" data-trim contenteditable>
+1cm * 1em => 1cm
+2in * 3in => 6in
+(1cm / 1em) * 4em => 4cm
+2in + 3cm + 2pc => 3.514in
+3in / 2in => 1.5in
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="scss" data-trim contenteditable>
+1cm * 1em => 1 cm
+2in * 3in => 6 in
+(1cm / 1em) * 4em => 4cm
+2in + 3cm + 2pc => 3.514in
+3in / 2in => 1.5
+						        </code></pre>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="stylus" data-trim contenteditable>
+1cm * 1em => 1 cm
+2in * 3in => 6in
+(1cm / 1em) * 4em => 4cm
+2in + 3cm + 2pc => 5.181in
+3in / 2in => 1.5in
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+					<section>
+						<h2>Imports</h2>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="less" data-trim contenteditable>
+@import "library"
+@import "mixins/mixin.less"
+@import "reset.css"
+						        </code></pre>
+						    </div>
+						    <div class="col-6 fragment">
+						        <pre><code class="scss" data-trim contenteditable>
+@import "library";
+@import "mixins/mixin.scss";
+@import "reset.css";
+						        </code></pre>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="col-6 fragment">
+						        <pre><code class="stylus" data-trim contenteditable>
+@import "library"
+@import "mixins/mixin.styl"
+@import "reset.css"
+						        </code></pre>
+						    </div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h1>End</h1>
+					<p>
+						<ul>
+							<li><a href="http://goo.gl/2IBgL7">http://goo.gl/2IBgL7</a></li>
+							<li><a href="http://lesscss.org/">http://lesscss.org/</a></li>
+							<li><a href="http://sass-lang.com/">http://sass-lang.com/</a></li>
+							<li><a href="https://icomoon.io/">https://icomoon.io/</a></li>
+							<li><a href="http://learnboost.github.io/stylus/">http://learnboost.github.io/stylus/</a></li>
+							<li><a href="http://nodejs.org/">http://nodejs.org/</a></li>
+							<li><a href="http://goo.gl/85IxmP">http://goo.gl/85IxmP</a></li>
+						</ul>
+					</p>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				
+			    controls: false, // Display controls in the bottom right corner
+				progress: true, // Display a presentation progress bar
+				slideNumber: false, // Display the page number of the current slide
+				history: false, // Push each slide change to the browser history
+				keyboard: true, // Enable keyboard shortcuts for navigation
+				overview: true, // Enable the slide overview mode
+				center: true, // Vertical centering of slides
+				touch: true, // Enables touch navigation on devices with touch input
+			    loop: false, // Loop the presentation
+				rtl: false, // Change the presentation direction to be RTL
+				fragments: true, // Turns fragments on and off globally
+				// Flags if the presentation is running in an embedded mode,
+			    // i.e. contained within a limited portion of the screen
+			    embedded: false,
+				// Flags if we should show a help overlay when the questionmark
+			    // key is pressed
+			    help: true,
+				// Number of milliseconds between automatically proceeding to the
+			    // next slide, disabled when set to 0, this value can be overwritten
+			    // by using a data-autoslide attribute on your slides
+			    autoSlide: 0,
+			    autoSlideStoppable: true, // Stop auto-sliding after user input
+				mouseWheel: false, // Enable slide navigation via mouse wheel
+				hideAddressBar: true, // Hides the address bar on mobile devices
+				previewLinks: false, // Opens links in an iframe preview overlay
+			    // Transition style
+			    transition: 'convex', // none/fade/slide/convex/concave/zoom
+			    // Transition speed
+			    transitionSpeed: 'fast', // default/fast/slow
+			    // Transition style for full page slide backgrounds
+			    backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+			    viewDistance: 3, // Number of slides away from the current that are visible
+			    // Parallax background image
+			    parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+			    // Parallax background size
+			    parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

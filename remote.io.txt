@@ -1,0 +1,7 @@
+NAVEGADOR:
+
+    javascript:if(!remot){var remot={io:{uid:'DY8N1'}};(function(){var sc=document.createElement('SCRIPT');sc.type='text/javascript';sc.src='http://remot.io/js/compact/bookmarklet.js';document.getElementsByTagName('head')[0].appendChild(sc);})();}
+
+SMARTPHONE:
+
+    http://remot.io/DY8N1/c
