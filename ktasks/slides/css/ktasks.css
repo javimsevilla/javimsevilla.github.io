@@ -1,0 +1,17 @@
+.imagen-titulos {
+  width: 40%;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.imagen-full {
+  width: 100%;
+}
+
+.imagen-logos {
+  border: none !important;
+  box-shadow: none !important;  
+  width:30%;
+  float: left;
+  margin-right: 10px !important;
+}

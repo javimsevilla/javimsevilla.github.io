@@ -1,0 +1,1 @@
+![Preguntas](slides/img/question.svg "Preguntas") <!-- .element: class="imagen-titulos" -->
